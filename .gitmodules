@@ -1,0 +1,3 @@
+[submodule "DebugLog/DDFileReader"]
+	path = DebugLog/DDFileReader
+	url = https://github.com/inamiy/DDFileReader.git
