@@ -31,6 +31,18 @@ class DebugLogTests: XCTestCase {
         super.tearDown()
     }
     
+    func testDebugLog()
+    {
+        let str: String = "hi"
+        LOG_OBJECT(str)
+        
+        let optional: String? = nil
+        LOG_OBJECT(optional)
+        
+        let implictlyUnwrappedOptional: String! = nil
+        LOG_OBJECT(implictlyUnwrappedOptional)
+    }
+    
     func testPrintlnPerformance()
     {
         self.measureBlock() {
