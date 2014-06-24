@@ -19,7 +19,7 @@ struct DebugLog
         println()
     }
     
-    static func print(_ body: Any = "", var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+    static func print(_ body: Any! = "", var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
     {
 #if DEBUG
     
@@ -40,7 +40,7 @@ struct DebugLog
     }
 }
 
-func LOG(_ body: Any = "", filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG(_ body: Any! = "", filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
 {
 #if DEBUG
     
@@ -49,7 +49,7 @@ func LOG(_ body: Any = "", filename: String = __FILE__, var functionName: String
 #endif
 }
 
-func LOG_OBJECT(_ body: Any = "", filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG_OBJECT(_ body: Any! = "", filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
 {
 #if DEBUG
     
