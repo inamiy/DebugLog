@@ -16,6 +16,8 @@
 		1FD469B019571E5F00BC0073 /* DebugLogDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD469AF19571E5F00BC0073 /* DebugLogDemoTests.swift */; };
 		1FD46A0E195725CB00BC0073 /* DDFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD46A0B195725BD00BC0073 /* DDFileReader.framework */; };
 		1FD46A0F195725CF00BC0073 /* DDFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD46A0B195725BD00BC0073 /* DDFileReader.framework */; };
+		1FF76471195BB00800756B5E /* DebugLog+ClassParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */; };
+		1FF76474195BB08200756B5E /* DebugLog+ClassParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		1FD4699619571D7A00BC0073 /* DebugLog+Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugLog+Printable.swift"; sourceTree = "<group>"; };
 		1FD4699719571D7A00BC0073 /* DebugLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
 		1FD469AF19571E5F00BC0073 /* DebugLogDemoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLogDemoTests.swift; sourceTree = "<group>"; };
+		1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugLog+ClassParsing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 				1FD4698819571D7A00BC0073 /* DDFileReader */,
 				1FD4699719571D7A00BC0073 /* DebugLog.swift */,
 				1FD4699619571D7A00BC0073 /* DebugLog+Printable.swift */,
+				1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */,
 			);
 			name = DebugLog;
 			path = ../DebugLog;
@@ -296,6 +300,7 @@
 				1FD469A419571D7A00BC0073 /* DebugLog+Printable.swift in Sources */,
 				1FD469A619571D7A00BC0073 /* DebugLog.swift in Sources */,
 				1FD469541957186500BC0073 /* AppDelegate.swift in Sources */,
+				1FF76471195BB00800756B5E /* DebugLog+ClassParsing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +311,7 @@
 				1FD469B019571E5F00BC0073 /* DebugLogDemoTests.swift in Sources */,
 				1FD469A519571D7A00BC0073 /* DebugLog+Printable.swift in Sources */,
 				1FD469A719571D7A00BC0073 /* DebugLog.swift in Sources */,
+				1FF76474195BB08200756B5E /* DebugLog+ClassParsing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

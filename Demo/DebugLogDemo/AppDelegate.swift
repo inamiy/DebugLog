@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         LOG("=== DEBUG ===")    // LOG = DebugLog.print
         
+        LOG_OBJECT(self)
+        LOG_OBJECT(AppDelegate.self)
+        
+        // TODO: returns (Metatype)
+//        LOG_OBJECT(Int.self)
+        
         let int: Integer = 3
         LOG_OBJECT(int)         // LOG_OBJECT(argument) = prints argument name
         

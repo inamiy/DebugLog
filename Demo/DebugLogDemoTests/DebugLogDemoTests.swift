@@ -33,6 +33,8 @@ class DebugLogTests: XCTestCase {
     
     func testDebugLog()
     {
+        LOG_OBJECT(NSString.self)
+        
         let str: String = "hi"
         LOG_OBJECT(str)
         

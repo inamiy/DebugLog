@@ -62,6 +62,22 @@ func LOG_OBJECT(_ body: Any! = "", filename: String = __FILE__, var functionName
 #endif
 }
 
+func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+{
+#if DEBUG
+    
+    let reader = DDFileReader(filePath: filename)
+    
+    let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
+    
+    LOG_OBJECT("\(classInfo.moduleName).\(classInfo.name)", filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+    
+    // comment-out: requires method name demangling
+//    LOG_OBJECT("\(class_getName(body))", filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+    
+#endif
+}
+
 extension DDFileReader
 {
     func readLine(index: Int) -> NSString!
