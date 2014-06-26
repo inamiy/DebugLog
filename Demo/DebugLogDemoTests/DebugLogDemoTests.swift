@@ -33,7 +33,10 @@ class DebugLogTests: XCTestCase {
     
     func testDebugLog()
     {
-        LOG_OBJECT(NSString.self)
+        LOG()   // prints functionName
+        LOG(3)
+        
+        LOG_OBJECT(NSString.self)   // prints "NSString.self = NSString"
         
         let str: String = "hi"
         LOG_OBJECT(str)

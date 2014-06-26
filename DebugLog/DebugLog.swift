@@ -11,11 +11,17 @@ import Foundation
 struct DebugLog
 {
     static var printHandler: (Any!, String!, String!, Int) -> Void = { body, filename, functionName, line in
-        if line > 0 {
-            println("[\(filename).\(functionName):\(line)]")
+        if let body_ = body as? String {
+            if countElements(body_) == 0 {
+                println("[\(filename).\(functionName):\(line)] \(body)")
+            }
+            else {
+                println("[\(filename):\(line)] \(body)")
+            }
         }
-        println(body)
-        println()
+        else {
+            println("[\(filename):\(line)] \(body)")
+        }
     }
     
     static func print(_ body: Any! = "", var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
@@ -68,8 +74,9 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
     let reader = DebugLog.FileReader(filePath: filename)
     
     let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
+    let classString = classInfo.moduleName ? "\(classInfo.moduleName).\(classInfo.name)" : "\(classInfo.name)"
     
-    LOG_OBJECT("\(classInfo.moduleName).\(classInfo.name)", filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+    LOG_OBJECT(classString, filename: filename, functionName: functionName, line: line, functionName2: functionName2)
     
     // comment-out: requires method name demangling
 //    LOG_OBJECT("\(class_getName(body))", filename: filename, functionName: functionName, line: line, functionName2: functionName2)
