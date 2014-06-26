@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F511161195BC12800A26D41 /* DebugLog+FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F511160195BC12800A26D41 /* DebugLog+FileReader.swift */; };
 		1FD469541957186500BC0073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD469531957186500BC0073 /* AppDelegate.swift */; };
 		1FD469561957186500BC0073 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD469551957186500BC0073 /* Images.xcassets */; };
 		1FD469A419571D7A00BC0073 /* DebugLog+Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4699619571D7A00BC0073 /* DebugLog+Printable.swift */; };
@@ -14,8 +15,6 @@
 		1FD469A619571D7A00BC0073 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4699719571D7A00BC0073 /* DebugLog.swift */; };
 		1FD469A719571D7A00BC0073 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4699719571D7A00BC0073 /* DebugLog.swift */; };
 		1FD469B019571E5F00BC0073 /* DebugLogDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD469AF19571E5F00BC0073 /* DebugLogDemoTests.swift */; };
-		1FD46A0E195725CB00BC0073 /* DDFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD46A0B195725BD00BC0073 /* DDFileReader.framework */; };
-		1FD46A0F195725CF00BC0073 /* DDFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD46A0B195725BD00BC0073 /* DDFileReader.framework */; };
 		1FF76471195BB00800756B5E /* DebugLog+ClassParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */; };
 		1FF76474195BB08200756B5E /* DebugLog+ClassParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */; };
 /* End PBXBuildFile section */
@@ -42,30 +41,16 @@
 			remoteGlobalIDString = 1FD4694D1957186500BC0073;
 			remoteInfo = DebugLogDemo;
 		};
-		1FD46A0A195725BD00BC0073 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FD4698F19571D7A00BC0073 /* DDFileReader.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F33AF391956A4A000BF88E3;
-			remoteInfo = DDFileReader;
-		};
-		1FD46A0C195725BD00BC0073 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FD4698F19571D7A00BC0073 /* DDFileReader.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F33AF441956A4A000BF88E3;
-			remoteInfo = DDFileReaderTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F511160195BC12800A26D41 /* DebugLog+FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugLog+FileReader.swift"; sourceTree = "<group>"; };
 		1FD4694E1957186500BC0073 /* DebugLogDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugLogDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD469521957186500BC0073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FD469531957186500BC0073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FD469551957186500BC0073 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1FD4695B1957186500BC0073 /* DebugLogDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebugLogDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD469601957186500BC0073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FD4698F19571D7A00BC0073 /* DDFileReader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DDFileReader.xcodeproj; path = DDFileReader/DDFileReader.xcodeproj; sourceTree = "<group>"; };
 		1FD4699619571D7A00BC0073 /* DebugLog+Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugLog+Printable.swift"; sourceTree = "<group>"; };
 		1FD4699719571D7A00BC0073 /* DebugLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
 		1FD469AF19571E5F00BC0073 /* DebugLogDemoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLogDemoTests.swift; sourceTree = "<group>"; };
@@ -77,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD46A0E195725CB00BC0073 /* DDFileReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD46A0F195725CF00BC0073 /* DDFileReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,30 +132,13 @@
 		1FD4698719571D7A00BC0073 /* DebugLog */ = {
 			isa = PBXGroup;
 			children = (
-				1FD4698819571D7A00BC0073 /* DDFileReader */,
 				1FD4699719571D7A00BC0073 /* DebugLog.swift */,
 				1FD4699619571D7A00BC0073 /* DebugLog+Printable.swift */,
+				1F511160195BC12800A26D41 /* DebugLog+FileReader.swift */,
 				1FF76470195BB00800756B5E /* DebugLog+ClassParsing.swift */,
 			);
 			name = DebugLog;
 			path = ../DebugLog;
-			sourceTree = "<group>";
-		};
-		1FD4698819571D7A00BC0073 /* DDFileReader */ = {
-			isa = PBXGroup;
-			children = (
-				1FD4698F19571D7A00BC0073 /* DDFileReader.xcodeproj */,
-			);
-			path = DDFileReader;
-			sourceTree = "<group>";
-		};
-		1FD46A06195725BD00BC0073 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1FD46A0B195725BD00BC0073 /* DDFileReader.framework */,
-				1FD46A0D195725BD00BC0073 /* DDFileReaderTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,12 +209,6 @@
 			mainGroup = 1FD469451957186500BC0073;
 			productRefGroup = 1FD4694F1957186500BC0073 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1FD46A06195725BD00BC0073 /* Products */;
-					ProjectRef = 1FD4698F19571D7A00BC0073 /* DDFileReader.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1FD4694D1957186500BC0073 /* DebugLogDemo */,
@@ -256,23 +216,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1FD46A0B195725BD00BC0073 /* DDFileReader.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DDFileReader.framework;
-			remoteRef = 1FD46A0A195725BD00BC0073 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1FD46A0D195725BD00BC0073 /* DDFileReaderTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = DDFileReaderTests.xctest;
-			remoteRef = 1FD46A0C195725BD00BC0073 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1FD4694C1957186500BC0073 /* Resources */ = {
@@ -297,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F511161195BC12800A26D41 /* DebugLog+FileReader.swift in Sources */,
 				1FD469A419571D7A00BC0073 /* DebugLog+Printable.swift in Sources */,
 				1FD469A619571D7A00BC0073 /* DebugLog.swift in Sources */,
 				1FD469541957186500BC0073 /* AppDelegate.swift in Sources */,

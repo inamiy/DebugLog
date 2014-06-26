@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DDFileReader
 
 struct DebugLog
 {
@@ -53,9 +52,9 @@ func LOG_OBJECT(_ body: Any! = "", filename: String = __FILE__, var functionName
 {
 #if DEBUG
     
-    let reader = DDFileReader(filePath: filename)
+    let reader = DebugLog.FileReader(filePath: filename)
     
-    let logBody = "\(reader.readLine(line)) = \(body)"
+    let logBody = "\(reader.readLogLine(line)) = \(body)"
     
     LOG(logBody, filename: filename, functionName: functionName, line: line, functionName2: functionName2)
     
@@ -66,7 +65,7 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
 {
 #if DEBUG
     
-    let reader = DDFileReader(filePath: filename)
+    let reader = DebugLog.FileReader(filePath: filename)
     
     let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
     
@@ -78,9 +77,9 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
 #endif
 }
 
-extension DDFileReader
+extension DebugLog.FileReader
 {
-    func readLine(index: Int) -> NSString!
+    func readLogLine(index: Int) -> NSString!
     {
         var line: NSString!
         

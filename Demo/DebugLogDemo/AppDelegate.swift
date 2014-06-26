@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DDFileReader
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
