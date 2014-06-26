@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LOG("=== DEBUG ===")    // LOG = DebugLog.print
         
         let int: Integer = 3
-        LOG_OBJECT(int)         // LOG_OBJECT = prints argument name
+        LOG_OBJECT(int)         // LOG_OBJECT(argument) = prints argument name
         
         let float: Float = 3.0
         LOG_OBJECT(float)

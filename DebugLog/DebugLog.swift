@@ -80,11 +80,11 @@ extension DDFileReader
             }
         }
         
-        let logFuncString = "LOG_OBJECT(.*)" as NSString
+        let logFuncString = "LOG_OBJECT\\(.*?\\)" as NSString
         
         var range = line.rangeOfString(logFuncString, options: .RegularExpressionSearch)
-        range.location += logFuncString.length-3
-        range.length -= logFuncString.length-2
+        range.location += logFuncString.length-6
+        range.length -= logFuncString.length-5
         
         line = line.substringWithRange(range).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         return line
