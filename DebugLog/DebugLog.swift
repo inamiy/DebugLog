@@ -98,7 +98,7 @@ extension DebugLog.FileReader
             lineNum++
             if lineNum == index {
                 line = currentLine
-                return
+                stop = true
             }
         }
         
