@@ -51,7 +51,7 @@ class DebugLogTests: XCTestCase {
     func testPrintlnPerformance()
     {
         self.measureBlock() {
-            for _ in 0..1000 {
+            for _ in 0 ..< 1000 {
 #if DEBUG
                 println("hoge")
 #endif
@@ -62,7 +62,7 @@ class DebugLogTests: XCTestCase {
     func testDebugLogPerformance()
     {
         self.measureBlock() {
-            for _ in 0..1000 {
+            for _ in 0 ..< 1000 {
                 LOG("hoge")
             }
         }

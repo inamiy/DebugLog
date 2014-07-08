@@ -14,7 +14,7 @@ extension Range : Printable, DebugPrintable
 {
     var description: String
     {
-        return "(\(startIndex)..\(endIndex))"
+        return "\(startIndex)..<\(endIndex)"
     }
     
     var debugDescription: String

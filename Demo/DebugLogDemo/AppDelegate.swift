@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: returns (Metatype)
 //        LOG_OBJECT(Int.self)
         
-        let int: Integer = 3
+        let int = 3
         LOG_OBJECT(int)         // LOG_OBJECT(argument) = prints argument name
         
         let float: Float = 3.0
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rect: CGRect = CGRect(x: 10, y: 20, width: 30, height: 40)
         LOG_OBJECT(rect)
         
-        let range: Range = 1..3
+        let range: Range = 1 ..< 3
         LOG_OBJECT(range)
         
         let nsRange: NSRange = NSMakeRange(2, 4)

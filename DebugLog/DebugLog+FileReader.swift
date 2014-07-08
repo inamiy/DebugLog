@@ -61,10 +61,10 @@ extension DebugLog
                     
                     var chunk = self._fileHandle.readDataOfLength(self.chunkSize)
                     
-                    let newLineRange = self._rangeOfData(chunk, dataToFind: newLineData)
+                    let newLineRange = self._rangeOfData(chunk, dataToFind: newLineData!)
                     
                     if newLineRange.location != NSNotFound {
-                        chunk = chunk.subdataWithRange(NSMakeRange(0, newLineRange.location+newLineData.length))
+                        chunk = chunk.subdataWithRange(NSMakeRange(0, newLineRange.location+newLineData!.length))
                         shouldReadMore = false
                     }
                     currentData.appendData(chunk)
@@ -107,7 +107,7 @@ extension DebugLog
             var searchIndex = 0
             var foundRange = NSRange(location: NSNotFound, length: dataToFind.length)
             
-            for index in 0..data.length {
+            for index in 0 ..< data.length {
                 
                 let bytes_ = UnsafeArray(start: UnsafePointer<CUnsignedChar>(data.bytes), length: data.length)
                 let searchBytes_ = UnsafeArray(start: UnsafePointer<CUnsignedChar>(dataToFind.bytes), length: data.length)
