@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 #endif
         
-        LOG()
+        LOG()           // prints __FUNCTION__
+        
+        LOG("")         // prints break
         
         LOG("=== DEBUG ===")    // LOG = DebugLog.print
         

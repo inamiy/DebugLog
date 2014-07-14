@@ -11,9 +11,15 @@ import Foundation
 struct DebugLog
 {
     static var printHandler: (Any!, String!, String!, Int) -> Void = { body, filename, functionName, line in
+        
+        if !body {
+            println("[\(filename).\(functionName):\(line)]")    // print functionName
+            return
+        }
+        
         if let body_ = body as? String {
             if countElements(body_) == 0 {
-                println("[\(filename).\(functionName):\(line)] \(body)")
+                println("") // print break
             }
             else {
                 println("[\(filename):\(line)] \(body)")
@@ -24,7 +30,7 @@ struct DebugLog
         }
     }
     
-    static func print(_ body: Any! = "", var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+    static func print(_ body: Any! = nil, var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
     {
 #if DEBUG
     
@@ -45,7 +51,7 @@ struct DebugLog
     }
 }
 
-func LOG(_ body: Any! = "", filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG(_ body: Any! = nil, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
 {
 #if DEBUG
     
@@ -54,7 +60,7 @@ func LOG(_ body: Any! = "", filename: String = __FILE__, var functionName: Strin
 #endif
 }
 
-func LOG_OBJECT(_ body: Any! = "", filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG_OBJECT(body: Any!, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
 {
 #if DEBUG
     
