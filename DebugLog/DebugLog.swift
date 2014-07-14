@@ -30,19 +30,10 @@ struct DebugLog
         }
     }
     
-    static func print(_ body: Any! = nil, var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+    static func print(_ body: Any! = nil, var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
     {
 #if DEBUG
     
-        //
-        // __FUNCTION__ workaround (in Xcode6-beta2)
-        // see also: https://github.com/DaveWoodCom/XCGLogger/blob/master/XCGLogger/XCGLogger/XCGLogger.swift#L10-L21
-        //
-        if functionName != functionName2 {
-            let range: Range = functionName2.rangeOfString(functionName, options: .LiteralSearch)
-            functionName = functionName2.stringByReplacingCharactersInRange(range, withString: "")
-        }
-        
         filename = filename.lastPathComponent.stringByDeletingPathExtension
         
         self.printHandler(body, filename, functionName, line)
@@ -51,16 +42,16 @@ struct DebugLog
     }
 }
 
-func LOG(_ body: Any! = nil, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG(_ body: Any! = nil, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
-    DebugLog.print(body, filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+    DebugLog.print(body, filename: filename, functionName: functionName, line: line)
     
 #endif
 }
 
-func LOG_OBJECT(body: Any!, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG_OBJECT(body: Any!, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -68,12 +59,12 @@ func LOG_OBJECT(body: Any!, filename: String = __FILE__, var functionName: Strin
     
     let logBody = "\(reader.readLogLine(line)) = \(body)"
     
-    LOG(logBody, filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+    LOG(logBody, filename: filename, functionName: functionName, line: line)
     
 #endif
 }
 
-func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__, functionName2: String = __FUNCTION__)
+func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -82,10 +73,10 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
     let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
     let classString = classInfo.moduleName ? "\(classInfo.moduleName).\(classInfo.name)" : "\(classInfo.name)"
     
-    LOG_OBJECT(classString, filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+    LOG_OBJECT(classString, filename: filename, functionName: functionName, line: line)
     
     // comment-out: requires method name demangling
-//    LOG_OBJECT("\(class_getName(body))", filename: filename, functionName: functionName, line: line, functionName2: functionName2)
+//    LOG_OBJECT("\(class_getName(body))", filename: filename, functionName: functionName, line: line)
     
 #endif
 }
