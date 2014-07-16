@@ -62,6 +62,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        LOG(currentThread)
         
         
+        // dispatch_group_async test
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let group = dispatch_group_create()
+        
+        for i in 0...9 {
+            dispatch_group_async(group, queue) {
+                LOG("dispatch_group_async \(i)")
+            }
+        }
+        dispatch_group_notify(group, queue) {
+            LOG("dispatch_group_async done")
+        }
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+        
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.whiteColor()
