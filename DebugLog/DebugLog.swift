@@ -10,6 +10,8 @@ import Foundation
 
 struct DebugLog
 {
+    static let _lock = NSObject()
+    
     static var printHandler: (Any!, String!, String!, Int) -> Void = { body, filename, functionName, line in
         
         if !body {
@@ -34,9 +36,12 @@ struct DebugLog
     {
 #if DEBUG
     
+        objc_sync_enter(_lock)
+    
         filename = filename.lastPathComponent.stringByDeletingPathExtension
-        
         self.printHandler(body, filename, functionName, line)
+    
+        objc_sync_exit(_lock)
     
 #endif
     }
