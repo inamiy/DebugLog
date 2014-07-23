@@ -76,7 +76,7 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
     let reader = DebugLog.FileReader(filePath: filename)
     
     let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
-    let classString = classInfo.moduleName ? "\(classInfo.moduleName).\(classInfo.name)" : "\(classInfo.name)"
+    let classString = classInfo.moduleName ? "\(classInfo.moduleName!).\(classInfo.name)" : "\(classInfo.name)"
     
     LOG_OBJECT(classString, filename: filename, functionName: functionName, line: line)
     

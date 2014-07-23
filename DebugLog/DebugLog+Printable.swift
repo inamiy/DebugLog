@@ -12,12 +12,12 @@ import QuartzCore
 
 extension Range : Printable, DebugPrintable
 {
-    var description: String
+    public var description: String
     {
         return "\(startIndex)..<\(endIndex)"
     }
     
-    var debugDescription: String
+    public var debugDescription: String
     {
         return self.description
     }
@@ -29,13 +29,13 @@ extension Range : Printable, DebugPrintable
 //
 extension CGAffineTransform : Printable, DebugPrintable
 {
-    var description: String
+    public var description: String
     {
 //        return NSStringFromCGAffineTransform(self) // comment-out: requires UIKit
         return "[\(a), \(b);\n \(c), \(d);\n \(tx), \(ty)]"
     }
     
-    var debugDescription: String
+    public var debugDescription: String
     {
         return self.description
     }
@@ -43,12 +43,12 @@ extension CGAffineTransform : Printable, DebugPrintable
 
 extension CATransform3D : Printable, DebugPrintable
 {
-    var description: String
+    public var description: String
     {
         return "[\(m11) \(m12) \(m13) \(m14);\n \(m21) \(m22) \(m23) \(m24);\n \(m31) \(m32) \(m33) \(m34);\n \(m41) \(m42) \(m43) \(m44)]"
     }
     
-    var debugDescription: String
+    public var debugDescription: String
     {
         return self.description
     }
