@@ -41,11 +41,17 @@ class DebugLogTests: XCTestCase {
         let str: String = "hi"
         LOG_OBJECT(str)
         
-        let optional: String? = nil
+        var optional: String? = nil
         LOG_OBJECT(optional)
         
-        let implictlyUnwrappedOptional: String! = nil
-        LOG_OBJECT(implictlyUnwrappedOptional)
+        optional = "this is optional"
+        LOG_OBJECT(optional)
+        
+        var implicitlyUnwrappedOptional: String! = nil
+        LOG_OBJECT(implicitlyUnwrappedOptional)
+        
+        implicitlyUnwrappedOptional = "this is im... bla bla optional"
+        LOG_OBJECT(implicitlyUnwrappedOptional)
     }
     
     func testPrintlnPerformance()
