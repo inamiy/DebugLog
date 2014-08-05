@@ -109,8 +109,8 @@ extension DebugLog
             
             for index in 0 ..< data.length {
                 
-                let bytes_ = UnsafeArray(start: UnsafePointer<CUnsignedChar>(data.bytes), length: data.length)
-                let searchBytes_ = UnsafeArray(start: UnsafePointer<CUnsignedChar>(dataToFind.bytes), length: data.length)
+                let bytes_ = UnsafeBufferPointer(start: UnsafePointer<CUnsignedChar>(data.bytes), length: data.length)
+                let searchBytes_ = UnsafeBufferPointer(start: UnsafePointer<CUnsignedChar>(dataToFind.bytes), length: data.length)
                 
                 if bytes_[index] == searchBytes_[searchIndex] {
                     if foundRange.location == NSNotFound {

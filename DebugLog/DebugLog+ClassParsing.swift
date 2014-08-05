@@ -58,7 +58,7 @@ extension DebugLog
         var substring = _substr(originalName, range: cursor ..< originalNameLength-cursor)
         
         // Module
-        let moduleLength = substring.bridgeToObjectiveC().integerValue
+        let moduleLength = (substring as NSString).integerValue
         let moduleLengthLength = "\(moduleLength)".utf16Count
         let moduleName = _substr(substring, range: moduleLengthLength ..< moduleLength)
         
@@ -67,7 +67,7 @@ extension DebugLog
         substring = _substr(originalName, range: cursor ..< originalNameLength-cursor)
         
         // Class name
-        let classLength = substring.bridgeToObjectiveC().integerValue
+        let classLength = (substring as NSString).integerValue
         let classLengthLength = "\(classLength)".utf16Count
         let className = _substr(substring, range: classLengthLength ..< classLength)
         
