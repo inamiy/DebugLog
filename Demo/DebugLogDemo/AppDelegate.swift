@@ -21,20 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 #endif
         
-        LOG()           // prints __FUNCTION__
-        
-        LOG("")         // prints break
-        
+        LOG()                   // prints __FUNCTION__
+        LOG("")                 // prints break
         LOG("=== DEBUG ===")    // LOG = DebugLog.print
         
-        LOG_OBJECT(self)
+        LOG_OBJECT(self)        // LOG_OBJECT(argument) = prints argument name
+        LOG_OBJECT(self.dynamicType)
         LOG_OBJECT(AppDelegate.self)
         
         // TODO: returns (Metatype)
-//        LOG_OBJECT(Int.self)
+        //LOG_OBJECT(Int.self)
         
         let int = 3
-        LOG_OBJECT(int)         // LOG_OBJECT(argument) = prints argument name
+        LOG_OBJECT(int)
         
         let float: Float = 3.0
         LOG_OBJECT(float)
@@ -48,33 +47,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nsRange: NSRange = NSMakeRange(2, 4)
         LOG_OBJECT(nsRange)
         
-        let optional: Int? = nil
-        LOG_OBJECT(optional)
+        let transform = CGAffineTransformIdentity
+        LOG_OBJECT(transform)
         
-        // comment-out: some C-structs don't work well, use dump() instead
-//        let transform = CGAffineTransformIdentity
-//        LOG_OBJECT(transform)
-//        let transform3D = CATransform3DIdentity
-//        LOG_OBJECT(transform3D)
+        let transform3D = CATransform3DIdentity
+        LOG_OBJECT(transform3D)
         
-        // comment-out: segmentation fault in Xcode6-beta2
-//        let currentThread = NSThread.currentThread
-//        LOG(currentThread)
+        let currentThread = NSThread.currentThread()
+        LOG(currentThread)
         
+        LOG("")
         
-        // dispatch_group_async test
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group = dispatch_group_create()
+        func testOptional()
+        {
+            LOG()
+            
+            var optional: Int? = nil
+            LOG_OBJECT(optional)
+            
+            optional = 111
+            LOG_OBJECT(optional)
+            
+            var impOptional: String! = nil
+            //LOG_OBJECT(impOptional)   // comment-out: accessing impOptional=nil will crash
+            
+            impOptional = "hoge"
+            LOG_OBJECT(impOptional)
+        }
         
-        for i in 0...9 {
-            dispatch_group_async(group, queue) {
-                LOG("dispatch_group_async \(i)")
+        testOptional()
+        LOG("")
+        
+        func testDoubleOptional()
+        {
+            LOG()
+            
+            var optional2: Int?? = nil
+            LOG_OBJECT(optional2)
+            
+            optional2 = Optional(nil)   // != nil
+            LOG_OBJECT(optional2)
+            
+            optional2 = 111
+            LOG_OBJECT(optional2)
+            
+            var impOptional2: String!! = nil
+            //LOG_OBJECT(impOptional2)  // comment-out: accessing impOptional=nil will crash
+            
+            impOptional2 = Optional(nil)
+            LOG_OBJECT(impOptional2)
+            
+            impOptional2 = "hoge"
+            LOG_OBJECT(impOptional2)
+        }
+        
+        testDoubleOptional()
+        LOG("")
+        
+        func testAsync()
+        {
+            LOG()
+            
+            // dispatch_group_async test
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            let group = dispatch_group_create()
+            
+            for i in 0...9 {
+                dispatch_group_async(group, queue) {
+                    LOG("dispatch_group_async \(i)")
+                }
             }
+            dispatch_group_notify(group, queue) {
+                LOG("dispatch_group_async done")
+            }
+            dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
         }
-        dispatch_group_notify(group, queue) {
-            LOG("dispatch_group_async done")
-        }
-        dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+        
+        testAsync()
+        LOG("")
         
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

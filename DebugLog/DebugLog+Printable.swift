@@ -10,19 +10,6 @@ import Foundation
 import CoreGraphics
 import QuartzCore
 
-extension Range : Printable, DebugPrintable
-{
-    public var description: String
-    {
-        return "\(startIndex)..<\(endIndex)"
-    }
-    
-    public var debugDescription: String
-    {
-        return self.description
-    }
-}
-
 //
 // TODO: 
 // Some C-structs (e.g. CGAffineTransform, CATransform3D) + Printable don't work well in Xcode6-beta2
