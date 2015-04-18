@@ -284,7 +284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${PROJECT_DIR}/../\n. concat.sh";
+			shellScript = "cd ${PROJECT_DIR}/../Scripts\n. concat.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
