@@ -20,7 +20,7 @@ struct DebugLog
         }
         
         if let body = body as? String {
-            if countElements(body) == 0 {
+            if count(body) == 0 {
                 println("") // print break
                 return
             }
@@ -69,7 +69,7 @@ func LOG_OBJECT(body: Any, filename: String = __FILE__, var functionName: String
 {
 #if DEBUG
     
-    if let reader = DebugLog.FileReader(filePath: filename) {
+    if let reader = DDFileReader(filePath: filename) {
         let logBody = "\(reader.readLogLine(line)) = \(body)"
         
         LOG(logBody, filename: filename, functionName: functionName, line: line)
@@ -82,7 +82,7 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
 {
 #if DEBUG
     
-    let reader = DebugLog.FileReader(filePath: filename)
+    let reader = DDFileReader(filePath: filename)
     
     let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
     let classString = classInfo.moduleName != nil ? "\(classInfo.moduleName!).\(classInfo.name)" : "\(classInfo.name)"
@@ -95,31 +95,3 @@ func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: S
 #endif
 }
 
-extension DebugLog.FileReader
-{
-    func readLogLine(index: Int) -> NSString!
-    {
-        var line: NSString!
-        
-        self.resetOffset()
-        
-        var lineNum = 0
-        
-        self.enumerateLinesUsingBlock { (currentLine, stop) in
-            lineNum++
-            if lineNum == index {
-                line = currentLine
-                stop = true
-            }
-        }
-        
-        let logFuncString = "LOG_OBJECT\\(.*?\\)" as NSString
-        
-        var range = line.rangeOfString(logFuncString, options: .RegularExpressionSearch)
-        range.location += logFuncString.length-6
-        range.length -= logFuncString.length-5
-        
-        line = line.substringWithRange(range).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        return line
-    }
-}
