@@ -7,7 +7,8 @@ DebugLog macro alternative for Swift, replacing old C macros e.g. [Log-YIHelper]
 How to use
 ----------
 
-Set `OTHER_SWIFT_FLAGS = -D DEBUG` in your Xcode project target.
+1. Drag & drop `DebugLog.all.swift` to your Xcode project.
+2. Set `OTHER_SWIFT_FLAGS = -D DEBUG` in your Xcode project target.
 
 ```
 LOG()
