@@ -53,22 +53,22 @@ extension DebugLog
                 moduleName: nil)
         }
         
-        let originalNameLength = originalName.utf16Count
+        let originalNameLength = count(originalName.utf16)
         var cursor = 4
         var substring = _substr(originalName, range: cursor ..< originalNameLength-cursor)
         
         // Module
         let moduleLength = (substring as NSString).integerValue
-        let moduleLengthLength = "\(moduleLength)".utf16Count
+        let moduleLengthLength = count("\(moduleLength)".utf16)
         let moduleName = _substr(substring, range: moduleLengthLength ..< moduleLength)
         
         // Update cursor and substring
-        cursor += moduleLengthLength + moduleName.utf16Count
+        cursor += moduleLengthLength + count(moduleName.utf16)
         substring = _substr(originalName, range: cursor ..< originalNameLength-cursor)
         
         // Class name
         let classLength = (substring as NSString).integerValue
-        let classLengthLength = "\(classLength)".utf16Count
+        let classLengthLength = count("\(classLength)".utf16)
         let className = _substr(substring, range: classLengthLength ..< classLength)
         
         return ParsedClass(type: ClassType.Swift,
