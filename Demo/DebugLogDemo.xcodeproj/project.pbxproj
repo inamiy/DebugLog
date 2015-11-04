@@ -186,6 +186,7 @@
 				1FD4694A1957186500BC0073 /* Sources */,
 				1FD4694B1957186500BC0073 /* Frameworks */,
 				1FD4694C1957186500BC0073 /* Resources */,
+				1FD84DD61BEAC91C000DD5E7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -274,6 +275,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1FD84DD61BEAC91C000DD5E7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/../Scripts/concat.sh";
+		};
 		1FF59ED41AE21CC4009C08DB /* Run Script (Concat all Swift files) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
