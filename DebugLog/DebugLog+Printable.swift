@@ -14,7 +14,7 @@ import QuartzCore
 // TODO: 
 // Some C-structs (e.g. CGAffineTransform, CATransform3D) + Printable don't work well in Xcode6-beta2
 //
-extension CGAffineTransform : Printable, DebugPrintable
+extension CGAffineTransform : CustomStringConvertible, CustomDebugStringConvertible
 {
     public var description: String
     {
@@ -28,7 +28,7 @@ extension CGAffineTransform : Printable, DebugPrintable
     }
 }
 
-extension CATransform3D : Printable, DebugPrintable
+extension CATransform3D : CustomStringConvertible, CustomDebugStringConvertible
 {
     public var description: String
     {

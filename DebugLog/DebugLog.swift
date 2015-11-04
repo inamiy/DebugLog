@@ -15,27 +15,27 @@ struct DebugLog
     static var printHandler: (Any!, String, String, Int) -> Void = { body, filename, functionName, line in
         
         if body == nil {
-            println("[\(filename).\(functionName):\(line)]")    // print functionName
+            print("[\(filename).\(functionName):\(line)]")    // print functionName
             return
         }
         
         if let body = body as? String {
-            if count(body) == 0 {
-                println("") // print break
+            if body.characters.count == 0 {
+                print("") // print break
                 return
             }
         }
         
-        println("[\(filename):\(line)] \(body)")
+        print("[\(filename):\(line)] \(body)")
     }
     
-    static func print(_ body: Any! = nil, var filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
+    static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
     {
 #if DEBUG
     
         objc_sync_enter(_lock)
     
-        filename = filename.lastPathComponent.stringByDeletingPathExtension
+        filename = ((filename as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
         self.printHandler(body, filename, functionName, line)
     
         objc_sync_exit(_lock)
@@ -45,7 +45,7 @@ struct DebugLog
 }
 
 /// LOG() = prints __FUNCTION__
-func LOG(filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
+func LOG(filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -55,7 +55,7 @@ func LOG(filename: String = __FILE__, var functionName: String = __FUNCTION__, l
 }
 
 /// LOG(...) = println
-func LOG(body: Any, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
+func LOG(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -65,7 +65,7 @@ func LOG(body: Any, filename: String = __FILE__, var functionName: String = __FU
 }
 
 /// LOG_OBJECT(myObject) = println("myObject = ...")
-func LOG_OBJECT(body: Any, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
+func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -78,11 +78,11 @@ func LOG_OBJECT(body: Any, filename: String = __FILE__, var functionName: String
 #endif
 }
 
-func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, var functionName: String = __FUNCTION__, line: Int = __LINE__)
+func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
-    let reader = DDFileReader(filePath: filename)
+    _ = DDFileReader(filePath: filename)
     
     let classInfo: DebugLog.ParsedClass = DebugLog.parseClass(body)
     let classString = classInfo.moduleName != nil ? "\(classInfo.moduleName!).\(classInfo.name)" : "\(classInfo.name)"
