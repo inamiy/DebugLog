@@ -45,7 +45,7 @@ struct DebugLog
 }
 
 /// LOG() = prints __FUNCTION__
-func LOG(filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG(filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -55,7 +55,7 @@ func LOG(filename: String = __FILE__, functionName: String = __FUNCTION__, line:
 }
 
 /// LOG(...) = println
-func LOG(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -65,7 +65,7 @@ func LOG(body: Any, filename: String = __FILE__, functionName: String = __FUNCTI
 }
 
 /// LOG_OBJECT(myObject) = println("myObject = ...")
-func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
@@ -78,7 +78,7 @@ func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: String = _
 #endif
 }
 
-func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
 {
 #if DEBUG
     
