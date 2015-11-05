@@ -16,17 +16,17 @@ class DebugLogTests: XCTestCase
     {
         super.setUp()
         
-        println()
-        println("===== SET UP =====")
+        print("", terminator: "")
+        print("===== SET UP =====", terminator: "")
 #if DEBUG
-        println("=== DEBUG MODE ===")
+        print("=== DEBUG MODE ===", terminator: "")
 #endif
     }
     
     override func tearDown()
     {
-        println()
-        println("===== TEAR DOWN =====")
+        print("", terminator: "")
+        print("===== TEAR DOWN =====", terminator: "")
         
         super.tearDown()
     }
@@ -149,7 +149,7 @@ class DebugLogTests: XCTestCase
         self.measureBlock() {
             for _ in 0 ..< 1000 {
 #if DEBUG
-                println("hoge")
+                print("hoge", terminator: "")
 #endif
             }
         }

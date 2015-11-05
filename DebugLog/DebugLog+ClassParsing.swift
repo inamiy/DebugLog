@@ -34,8 +34,8 @@ extension DebugLog
     }
 
     static func _substr(str: String, range: Range<Int>) -> String {
-        let startIndex = advance(str.startIndex, range.startIndex)
-        let endIndex = advance(startIndex, range.endIndex)
+        let startIndex = str.startIndex.advancedBy(range.startIndex)
+        let endIndex = startIndex.advancedBy(range.endIndex)
         
         return str[Range(start: startIndex, end: endIndex)]
     }
@@ -53,22 +53,22 @@ extension DebugLog
                 moduleName: nil)
         }
         
-        let originalNameLength = count(originalName.utf16)
+        let originalNameLength = originalName.utf16.count
         var cursor = 4
         var substring = _substr(originalName, range: cursor ..< originalNameLength-cursor)
         
         // Module
         let moduleLength = (substring as NSString).integerValue
-        let moduleLengthLength = count("\(moduleLength)".utf16)
+        let moduleLengthLength = "\(moduleLength)".utf16.count
         let moduleName = _substr(substring, range: moduleLengthLength ..< moduleLength)
         
         // Update cursor and substring
-        cursor += moduleLengthLength + count(moduleName.utf16)
+        cursor += moduleLengthLength + moduleName.utf16.count
         substring = _substr(originalName, range: cursor ..< originalNameLength-cursor)
         
         // Class name
         let classLength = (substring as NSString).integerValue
-        let classLengthLength = count("\(classLength)".utf16)
+        let classLengthLength = "\(classLength)".utf16.count
         let className = _substr(substring, range: classLengthLength ..< classLength)
         
         return ParsedClass(type: ClassType.Swift,
