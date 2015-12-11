@@ -143,6 +143,22 @@ class DebugLogTests: XCTestCase
         testAsync()
         LOG("")
     }
+
+    func testDatetimeConfig() {
+        LOG(); LOG(1); LOG(NSObject())
+        let (showDateTime, locale, dateFormat) = (Config.showDateTime, Config.locale, Config.dateFormat)
+        Config.showDateTime = true
+        Config.locale = NSLocale(localeIdentifier: "ja_JP")
+        Config.dateFormat = "yyyy/MM/dd hh-mm-ss-SSS z"
+        LOG(); LOG(1); LOG(NSObject())
+        Config.locale = NSLocale(localeIdentifier: "__invalid__")
+        LOG(); LOG(1); LOG(NSObject())
+        // restore
+        Config.showDateTime = showDateTime
+        Config.locale = locale
+        Config.dateFormat = dateFormat
+        LOG(); LOG(1); LOG(NSObject())
+    }
     
     func testPrintlnPerformance()
     {
