@@ -172,7 +172,7 @@ extension CATransform3D : CustomStringConvertible, CustomDebugStringConvertible
 
 import Foundation
 
-struct DebugLog
+public struct DebugLog
 {
     private static let _lock = NSObject()
     
@@ -188,7 +188,7 @@ struct DebugLog
         return self._dateFormatter.stringFromDate(NSDate())
     }
     
-    static var printHandler: (Any!, String, String, Int) -> Void = { body, filename, functionName, line in
+    public static var printHandler: (Any!, String, String, Int) -> Void = { body, filename, functionName, line in
 
         let dateString = DebugLog._currentDateString()
 
@@ -207,7 +207,7 @@ struct DebugLog
         print("\(dateString) [\(filename):\(line)] \(body)")
     }
     
-    static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+    public static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
     {
 #if DEBUG
     
