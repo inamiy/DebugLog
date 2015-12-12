@@ -172,14 +172,28 @@ extension CATransform3D : CustomStringConvertible, CustomDebugStringConvertible
 
 import Foundation
 
+public struct Config {
+    public static var locale = NSLocale.currentLocale()
+    public static var showDateTime = false
+    public static var dateFormat = "yyyy-MM-dd HH:mm:ss.SSS "
+}
+
 struct DebugLog
 {
     static let _lock = NSObject()
     
     static var printHandler: (Any!, String, String, Int) -> Void = { body, filename, functionName, line in
-        
+
+        var datetime = ""
+        if Config.showDateTime {
+            let formatter = NSDateFormatter()
+            formatter.locale = Config.locale
+            formatter.dateFormat = Config.dateFormat
+            datetime = formatter.stringFromDate(NSDate())
+        }
+
         if body == nil {
-            print("[\(filename).\(functionName):\(line)]")    // print functionName
+            print("\(datetime)[\(filename).\(functionName):\(line)]")    // print functionName
             return
         }
         
@@ -190,7 +204,7 @@ struct DebugLog
             }
         }
         
-        print("[\(filename):\(line)] \(body)")
+        print("\(datetime)[\(filename):\(line)] \(body)")
     }
     
     static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
