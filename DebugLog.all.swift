@@ -172,28 +172,28 @@ extension CATransform3D : CustomStringConvertible, CustomDebugStringConvertible
 
 import Foundation
 
-public struct Config {
-    public static var locale = NSLocale.currentLocale()
-    public static var showDateTime = false
-    public static var dateFormat = "yyyy-MM-dd HH:mm:ss.SSS "
-}
-
-struct DebugLog
+public struct DebugLog
 {
-    static let _lock = NSObject()
+    private static let _lock = NSObject()
     
-    static var printHandler: (Any!, String, String, Int) -> Void = { body, filename, functionName, line in
+    private static let _dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale.currentLocale()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        return formatter
+    }()
+    
+    private static func _currentDateString() -> String
+    {
+        return self._dateFormatter.stringFromDate(NSDate())
+    }
+    
+    public static var printHandler: (Any!, String, String, Int) -> Void = { body, filename, functionName, line in
 
-        var datetime = ""
-        if Config.showDateTime {
-            let formatter = NSDateFormatter()
-            formatter.locale = Config.locale
-            formatter.dateFormat = Config.dateFormat
-            datetime = formatter.stringFromDate(NSDate())
-        }
+        let dateString = DebugLog._currentDateString()
 
         if body == nil {
-            print("\(datetime)[\(filename).\(functionName):\(line)]")    // print functionName
+            print("\(dateString) [\(filename).\(functionName):\(line)]")    // print functionName
             return
         }
         
@@ -204,10 +204,10 @@ struct DebugLog
             }
         }
         
-        print("\(datetime)[\(filename):\(line)] \(body)")
+        print("\(dateString) [\(filename):\(line)] \(body)")
     }
     
-    static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+    public static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
     {
 #if DEBUG
     
