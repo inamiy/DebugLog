@@ -37,7 +37,7 @@ extension DebugLog
         let startIndex = str.startIndex.advancedBy(range.startIndex)
         let endIndex = startIndex.advancedBy(range.endIndex)
         
-        return str[Range(start: startIndex, end: endIndex)]
+        return str[startIndex..<endIndex]
     }
 
     static func parseClass(aClass: AnyClass) -> ParsedClass {
