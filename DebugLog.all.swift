@@ -20,7 +20,7 @@ extension DDFileReader
         var lineNum = 0
         
         self.enumerateLinesUsingBlock { (currentLine, stop) in
-            lineNum++
+            lineNum += 1
             if lineNum == index {
                 line = currentLine
                 stop = true
@@ -77,7 +77,7 @@ extension DebugLog
         let startIndex = str.startIndex.advancedBy(range.startIndex)
         let endIndex = startIndex.advancedBy(range.endIndex)
         
-        return str[Range(start: startIndex, end: endIndex)]
+        return str[startIndex..<endIndex]
     }
 
     static func parseClass(aClass: AnyClass) -> ParsedClass {
@@ -401,7 +401,7 @@ extension NSData
                 if foundRange.location == NSNotFound {
                     foundRange.location = index
                 }
-                searchIndex++
+                searchIndex += 1
                 if searchIndex >= dataToFind.length {
                     return foundRange
                 }

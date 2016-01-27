@@ -19,7 +19,7 @@ extension DDFileReader
         var lineNum = 0
         
         self.enumerateLinesUsingBlock { (currentLine, stop) in
-            lineNum++
+            lineNum += 1
             if lineNum == index {
                 line = currentLine
                 stop = true
