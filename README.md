@@ -51,6 +51,22 @@ will display:
 2015-12-12 18:01:00.383 [AppDelegate:44] nsRange = (2,4)
 2015-12-12 18:01:00.384 [AppDelegate:47] optional = nil
 ```
+Note
+----------
+`LOG_OBJECT` does not print variable names on Devices. Output would look like this.
+
+  ```
+  2015-12-12 18:01:00.375 [AppDelegate.application(_:didFinishLaunchingWithOptions:):24]
+  2015-12-12 18:01:00.376 [AppDelegate:26] Hello World!
+  2015-12-12 18:01:00.380 [AppDelegate:28] nil
+  2015-12-12 18:01:00.381 [AppDelegate:29] DebugLogDemo.AppDelegate
+  2015-12-12 18:01:00.381 [AppDelegate:32] 3
+  2015-12-12 18:01:00.382 [AppDelegate:35] 3.0
+  2015-12-12 18:01:00.382 [AppDelegate:38] (10.0, 20.0, 30.0, 40.0)
+  2015-12-12 18:01:00.383 [AppDelegate:41] 1..<4
+  2015-12-12 18:01:00.383 [AppDelegate:44] (2,4)
+  2015-12-12 18:01:00.384 [AppDelegate:47] nil
+  ```
 
 For further customization, change default `Debug.printHandler` to print in any format & logging destination.
 
