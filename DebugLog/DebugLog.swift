@@ -87,6 +87,8 @@ public func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: Str
         let logBody = "\(reader.readLogLine(line)) = \(body)"
         
         LOG(logBody, filename: filename, functionName: functionName, line: line)
+    } else {
+        LOG(body, filename: filename, functionName: functionName, line: line)
     }
     
 #endif
