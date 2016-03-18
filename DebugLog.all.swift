@@ -320,7 +320,9 @@ public class DDFileReader
     
     deinit
     {
-        self._fileHandle.closeFile()
+        if let _fileHandle = self._fileHandle {
+            _fileHandle.closeFile()
+        }
     }
     
     public func readLine() -> NSString?
