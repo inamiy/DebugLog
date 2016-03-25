@@ -43,14 +43,18 @@ public struct DebugLog
         print("\(dateString) [\(filename):\(line)] \(body)")
     }
     
-    public static func print(body: Any! = nil, var filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+    public static func print(body: Any! = nil, filename: String = #file, functionName: String = #function, line: Int = #line)
     {
 #if DEBUG
     
         objc_sync_enter(_lock)
     
-        filename = ((filename as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
-        self.printHandler(body, filename, functionName, line)
+        self.printHandler(
+            body,
+            ((filename as NSString).lastPathComponent as NSString).stringByDeletingPathExtension,
+            functionName,
+            line
+    )
     
         objc_sync_exit(_lock)
     
@@ -59,7 +63,7 @@ public struct DebugLog
 }
 
 /// LOG() = prints __FUNCTION__
-public func LOG(filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG(filename: String = #file, functionName: String = #function, line: Int = #line)
 {
 #if DEBUG
     
@@ -69,7 +73,7 @@ public func LOG(filename: String = __FILE__, functionName: String = __FUNCTION__
 }
 
 /// LOG(...) = println
-public func LOG(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG(body: Any, filename: String = #file, functionName: String = #function, line: Int = #line)
 {
 #if DEBUG
     
@@ -79,7 +83,7 @@ public func LOG(body: Any, filename: String = __FILE__, functionName: String = _
 }
 
 /// LOG_OBJECT(myObject) = println("myObject = ...")
-public func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG_OBJECT(body: Any, filename: String = #file, functionName: String = #function, line: Int = #line)
 {
 #if DEBUG
     
@@ -94,7 +98,7 @@ public func LOG_OBJECT(body: Any, filename: String = __FILE__, functionName: Str
 #endif
 }
 
-public func LOG_OBJECT(body: AnyClass, filename: String = __FILE__, functionName: String = __FUNCTION__, line: Int = __LINE__)
+public func LOG_OBJECT(body: AnyClass, filename: String = #file, functionName: String = #function, line: Int = #line)
 {
 #if DEBUG
     
